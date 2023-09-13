@@ -13,6 +13,7 @@
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
 
+
 	<!-- 한글처리 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -45,7 +46,6 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
 
 
 
