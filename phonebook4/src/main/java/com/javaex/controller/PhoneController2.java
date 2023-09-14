@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javaex.dao.PersonDao;
 import com.javaex.vo.PersonVo;
 
-@RequestMapping(value = "user")
 public class PhoneController2 {
 	
 	// 필드
@@ -23,7 +22,7 @@ public class PhoneController2 {
 	
 
 	// 리스트 출력
-	@RequestMapping("list")
+	@RequestMapping("list2")
 	// @RequestMapping(value="/list", method={RequestMethod.GET,RequestMethod.POST})
 	// 전부 생략 가능
 	public String list(Model model) {

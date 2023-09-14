@@ -2,7 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="phonebook">
-	
+
 	<!-- 쿼리문 작성 -->
+
+	<select id="Select" resultType="com.javaex.vo.PersonVo" >
+		SELECT  person_id
+				,name
+				,hp
+				,company
+		FROM person
+		ORDER BY person_id desc
+	</select>
+
 
 </mapper>
