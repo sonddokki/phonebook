@@ -4,7 +4,7 @@ public class PersonVo {
 
 	// 필드
 
-	private int personId;
+	private int person_id;
 	private String name;
 	private String hp;
 	private String company;
@@ -18,8 +18,8 @@ public class PersonVo {
 		this.company = company;
 	}
 	
-	public PersonVo(int personId, String name, String hp, String company) {
-		this.personId = personId;
+	public PersonVo(int person_id, String name, String hp, String company) {
+		this.person_id = person_id;
 		this.name = name;
 		this.hp = hp;
 		this.company = company;
@@ -27,12 +27,12 @@ public class PersonVo {
 	
 	// 메소드-gs
 
-	public int getPersonId() {
-		return personId;
+	public int getPerson_id() {
+		return person_id;
 	}
 
-	public void setPersonId(int personId) {
-		this.personId = personId;
+	public void setPerson_id(int person_id) {
+		this.person_id = person_id;
 	}
 
 	public String getName() {
@@ -62,7 +62,7 @@ public class PersonVo {
 	// 메소드-일반
 	@Override
 	public String toString() {
-		return personId + ".\t" + name + "\t" + hp + "\t" + company;
+		return person_id + ".\t" + name + "\t" + hp + "\t" + company;
 	}
 	
 	

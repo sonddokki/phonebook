@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<td><a href="./updateForm?name=${personVo.name}">[수정]</a></td>
-			<td><a href="./delete?id=${personVo.personId}">[삭제]</a></td>
+			<td><a href="./delete?id=${personVo.person_id}">[삭제]</a></td>
 		</tr>
 	</table>
 	</c:forEach>

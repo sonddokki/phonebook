@@ -23,11 +23,17 @@ public class PersonDao {
 	public List<PersonVo> personSelect() {
 		
 		// db에서 리스트 가져온다
-		List<PersonVo> personList = sqlSession.selectList("phonebook.Select");
-
-		System.out.println(personList);
+		List<PersonVo> personList = sqlSession.selectList("phonebook.select");
 		
-		return null;		
+		return personList;		
 	}
+	
+	// 삭제하기
+	public int personDelete(int person_id) {		
+		 int count = sqlSession.delete("phonebook.delete", person_id);		
+		
+		return count;
+	}
+	
 
 }

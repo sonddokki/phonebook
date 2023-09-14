@@ -5,14 +5,30 @@
 
 	<!-- 쿼리문 작성 -->
 
-	<select id="Select" resultType="com.javaex.vo.PersonVo" >
-		SELECT  person_id
-				,name
-				,hp
-				,company
-		FROM person
-		ORDER BY person_id desc
+	<!-- 리스트 검색 -->
+	<select id="select" resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+		    SELECT  person_id
+					,name
+					,hp
+					,company
+			FROM person
+			ORDER BY person_id desc	
+		]]>
+
+
 	</select>
+	
+	<!-- 삭제하기 -->
+	<delete id="delete" parameterType="int" >
+		<![CDATA[
+		    DELETE FROM person 
+			WHERE person_id = #{person_id}
+		]]>
+
+
+	</delete>
+
 
 
 </mapper>

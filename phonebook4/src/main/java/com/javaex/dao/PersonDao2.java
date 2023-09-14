@@ -167,7 +167,7 @@ public class PersonDao2 {
 			pstmt.setString(1, personVo.getName());
 			pstmt.setString(2, personVo.getHp());
 			pstmt.setString(3, personVo.getCompany());
-			pstmt.setInt(4,personVo.getPersonId());
+			pstmt.setInt(4,personVo.getPerson_id());
 
 			// 실행
 			count = pstmt.executeUpdate();

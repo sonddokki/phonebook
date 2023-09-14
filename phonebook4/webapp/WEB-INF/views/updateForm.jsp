@@ -17,7 +17,7 @@
 		이름(name): <input type="text" name="name" value="${udPerson.get(0).name}"><br> 
 		핸드폰(hp): <input type="text" name="hp" value="${udPerson.get(0).hp}"><br> 
 		회사(company): <input 	type="text" name="company" value="${udPerson.get(0).company}"><br> 
-		<input type="hidden" name="personId" value="${udPerson.get(0).personId}"><br>
+		<input type="hidden" name="person_id" value="${udPerson.get(0).person_id}"><br>
 		<button type="submit">수정</button>
 	</form>
 
