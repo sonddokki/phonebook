@@ -15,19 +15,48 @@
 			FROM person
 			ORDER BY person_id desc	
 		]]>
-
-
 	</select>
-	
+
 	<!-- 삭제하기 -->
-	<delete id="delete" parameterType="int" >
+	<delete id="delete" parameterType="int">
 		<![CDATA[
 		    DELETE FROM person 
 			WHERE person_id = #{person_id}
 		]]>
-
-
 	</delete>
+
+	<!-- 등록하기 -->
+	<insert id="insert" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+		    INSERT INTO person
+			VALUES (seq_person_id.nextval, #{name}, #{hp}, #{company} )
+		]]>
+	</insert>
+
+	<!-- 1명불러오기 -->
+	<select id="selectByNo" parameterType="int"
+		resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+		    SELECT  person_id
+					,name
+					,hp
+					,company
+			FROM person
+			where person_id = #{person_id}
+		]]>
+	</select>
+
+	<!-- 수정하기 -->
+	<update id="update" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+		    UPDATE person
+			set name = #{name}
+			    ,hp = #{hp}
+			    ,company = #{company}
+			where person_id = #{person_id}
+		]]>
+	</update>
+
 
 
 

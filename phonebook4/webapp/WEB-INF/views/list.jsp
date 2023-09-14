@@ -30,7 +30,7 @@
 			<td>${personVo.company}</td>
 		</tr>
 		<tr>
-			<td><a href="./updateForm?name=${personVo.name}">[수정]</a></td>
+			<td><a href="./updateForm?id=${personVo.person_id}">[수정]</a></td>
 			<td><a href="./delete?id=${personVo.person_id}">[삭제]</a></td>
 		</tr>
 	</table>

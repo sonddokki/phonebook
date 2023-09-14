@@ -14,10 +14,10 @@
 	<p>정보을 수정하는 폼입니다. 수정할 정보를 입력하고 수정 버튼을 누르세요</p>
 
 	<form action="update" method="get" >
-		이름(name): <input type="text" name="name" value="${udPerson.get(0).name}"><br> 
-		핸드폰(hp): <input type="text" name="hp" value="${udPerson.get(0).hp}"><br> 
-		회사(company): <input 	type="text" name="company" value="${udPerson.get(0).company}"><br> 
-		<input type="hidden" name="person_id" value="${udPerson.get(0).person_id}"><br>
+		이름(name): <input type="text" name="name" value="${personVo.name}"><br> 
+		핸드폰(hp): <input type="text" name="hp" value="${personVo.hp}"><br> 
+		회사(company): <input 	type="text" name="company" value="${personVo.company}"><br> 
+		<input type="hidden" name="person_id" value="${personVo.person_id}"><br>
 		<button type="submit">수정</button>
 	</form>
 
