@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,12 @@ import com.javaex.vo.PersonVo;
 @Controller
 @RequestMapping(value = "user")
 public class PhoneController {
+	
+	// 필드
+	@Autowired  // dao 자동연결
+	private PersonDao personDao;
+	
+	
 
 	// 리스트 출력
 	@RequestMapping("list")
@@ -22,7 +29,6 @@ public class PhoneController {
 	// 전부 생략 가능
 	public String list(Model model) {
 		System.out.println("리스트 출력");
-		PersonDao personDao = new PersonDao();
 		List<PersonVo> personList = personDao.personSelect("");
 
 		// model 주소를 받고 메소드를 이용해서 담는다
@@ -31,7 +37,7 @@ public class PhoneController {
 		model.addAttribute("personList", personList);
 
 		// list.jsp에 포워드 한다
-		return "/WEB-INF/list.jsp";
+		return "list";
 	}
 
 	// 등록폼 출력
@@ -40,7 +46,7 @@ public class PhoneController {
 		System.out.println("등록폼 출력");
 
 		// writeForm.jsp에 포워드 한다
-		return "/WEB-INF/writeForm.jsp";
+		return "writeForm";
 	}
 
 	// 등록 실행(1)
@@ -63,8 +69,7 @@ public class PhoneController {
 		@RequestMapping("write")
 		public String write(@ModelAttribute PersonVo personVo) {
 			System.out.println("등록 실행(2)");		
-					
-			PersonDao personDao = new PersonDao();
+			
 			personDao.personInsert(personVo);
 
 			// list.jsp에 리다이렉트 한다
@@ -77,21 +82,19 @@ public class PhoneController {
 							 @RequestParam("name") String name) {
 		System.out.println("수정폼 출력");
 		
-		PersonDao personDao = new PersonDao();
 		List<PersonVo> updatePerson = personDao.personSelect(name);
 
 		model.addAttribute("udPerson", updatePerson);
 
 		// updateForm.jsp에 포워드 한다
-		return "/WEB-INF/updateForm.jsp";
+		return "updateForm";
 	}
 
 	// 수정 실행
 	@RequestMapping("/update")
 	public String update(@ModelAttribute PersonVo personVo) {
 		System.out.println("수정 실행");
-		
-		PersonDao personDao = new PersonDao();
+	
 		personDao.personUpdate(personVo);
 		
 		// list.jsp에 리다이렉트 한다
@@ -102,8 +105,7 @@ public class PhoneController {
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("id") int personId) {
 		System.out.println("삭제 실행");
-		
-		PersonDao personDao = new PersonDao();
+	
 		personDao.personDelete(personId);		
 
 		// list.jsp에 리다이렉트 한다
