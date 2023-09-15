@@ -149,7 +149,7 @@ public class PhoneController {
 		// ds에게 데이터 보낸다
 		model.addAttribute("personList", personList);
 
-		return "list";
+		return "";
 	}
 
 }
