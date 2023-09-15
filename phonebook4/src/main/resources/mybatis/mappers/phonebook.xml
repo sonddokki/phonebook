@@ -57,7 +57,13 @@
 		]]>
 	</update>
 
-
-
+	<!-- =================================================================
+	// Map사용 (등록하기2 예제)-->
+	<insert id="insert2" parameterType="map">
+		<![CDATA[
+		    INSERT INTO person
+			VALUES (seq_person_id.nextval, #{name}, #{hp}, #{company} )
+		]]>
+	</insert>
 
 </mapper>
