@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.PersonVo;
+import com.javaex.vo.PersonVo2;
 
 @Repository
 public class PersonDao {
@@ -76,5 +77,26 @@ public class PersonDao {
 		return 0;
 	}
 	
+	// Map사용 (updateForm2 예제)
+	public Map<String, Object> personSelectOne2(int person_id) {
+		System.out.println("Dao: "+person_id);
+
+		Map<String, Object> personMap = sqlSession.selectOne("phonebook.selectByNo2", person_id);
+		System.out.println(personMap);
+		// DB에서 가져오는 칼럼명을 그대로 암호로 쓰기때문에 소문자는 안됨
+		System.out.println(personMap.get("PERSON_ID"));
+		System.out.println(personMap.get("person_id"));
+		
+		return personMap;		
+	}
+	
+	// 리스트 검색
+		public List<PersonVo> personSelect2() {
+			System.out.println("dao select2");
+			// db에서 리스트 가져온다
+			List<PersonVo> personList = sqlSession.selectList("phonebook.select2");
+			System.out.println(personList);
+			return personList;
+		}
 
 }

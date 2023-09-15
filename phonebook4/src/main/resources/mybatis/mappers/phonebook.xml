@@ -65,5 +65,31 @@
 			VALUES (seq_person_id.nextval, #{name}, #{hp}, #{company} )
 		]]>
 	</insert>
+	
+	<!-- 1명불러오기 -->
+	<select id="selectByNo2" parameterType="int" resultType="map">
+		<![CDATA[
+		    SELECT  person_id
+					,name
+					,hp
+					,company
+			FROM person
+			where person_id = #{person_id}
+		]]>
+	</select>
+	
+	<!-- =================================================================
+	// resultMap (리스트2 예제)-->
+	<select id="select2" resultType="com.javaex.vo.PersonVo2">
+		<![CDATA[
+		    SELECT  person_id as personId
+					,name
+					,hp
+					,company
+			FROM person
+			ORDER BY person_id desc	
+		]]>
+	</select>
+	
 
 </mapper>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.dao.PersonDao;
 import com.javaex.vo.PersonVo;
+import com.javaex.vo.PersonVo2;
 
 @Controller
 public class PhoneController {
@@ -91,14 +92,14 @@ public class PhoneController {
 
 	// =================================================================
 	// Map사용 (등록하기2 예제)
-	@RequestMapping("/write2") 
+	@RequestMapping("/write2")
 	public String write2(@RequestParam("name") String name
-			//,@ModelAttribute PersonVo personVo
-			) {
+	// ,@ModelAttribute PersonVo personVo
+	) {
 		System.out.println("수정하기2 예제");
 		String hp = "010-1313-3131";
 		String company = "010-9999-3131";
-		
+
 		// sql세션에는 한가지값만 넘길 수 있음
 		// 1) Vo로 묶는다 (해당값을 넘길 Vo가 없으면 만들어서 묶기)
 //		PersonVo personVo = new PersonVo();
@@ -107,21 +108,48 @@ public class PhoneController {
 //		personVo.setCompany(company);
 //		int count = personDao.write2(personVo);
 //		System.out.println(count);
-		
-		// ==================		
-		// 2) Vo를 만들지않기   ?==> 이번 딱 1번만 쓸거 같아서 걍 안만들기 (Map을 사용한다)
+
+		// ==================
+		// 2) Vo를 만들지않기 ?==> 이번 딱 1번만 쓸거 같아서 걍 안만들기 (Map을 사용한다)
 		Map<String, Object> personMap = new HashMap<String, Object>();
-		// Map<String, String> 
+		// Map<String, String>
 		// 전부 String일때는 Object대신 String넣어도 무방
 		personMap.put("name", name);
 		personMap.put("hp", hp);
 		personMap.put("company", company);
-		
+
 		// http://localhost:8000/phonebook4/write2?name=
-		System.out.println(personMap);	
+		System.out.println(personMap);
 		personDao.write2(personMap);
 
 		return "";
+	}
+
+	// Map사용 (seleteOne 예제)
+	@RequestMapping("/updateForm2")
+	public String updateForm2(@RequestParam("id") int person_id, Model model) {
+		System.out.println("수정폼2 출력");
+		System.out.println("id");
+
+		Map<String, Object> personMap = personDao.personSelectOne2(person_id);
+
+		model.addAttribute("personMap", personMap);
+
+		return "updateForm2";
+	}
+
+	// 리스트
+	@RequestMapping("/list2")
+	public String list2(Model model) {
+		System.out.println("리스트2 출력");
+
+		// db에서 리스트를 가져온다
+		List<PersonVo> personList = personDao.personSelect2();
+
+		// ds에게 데이터 보낸다
+		model.addAttribute("personList", personList);
+
+		return "list";
 	}
 
 }
